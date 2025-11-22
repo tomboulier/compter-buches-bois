@@ -2,7 +2,7 @@
 
 Ce projet est une application simple permettant de compter des bûches de bois sur une photo en utilisant l'intelligence artificielle (SAM2 - Segment Anything Model 2).
 
-L'interface graphique permet de cliquer sur les bûches pour les segmenter et les compter automatiquement.
+L'interface graphique utilise **Gradio**, ce qui la rend moderne et facile à utiliser dans le navigateur.
 
 ## Prérequis
 
@@ -26,10 +26,6 @@ curl -LsSf https://astral.sh/uv/install.sh | sh
    ```bash
    uv sync
    ```
-   Ou manuellement si vous n'utilisez pas `uv` (déconseillé pour ce projet configuré avec uv) :
-   ```bash
-   pip install opencv-python torch torchvision numpy pillow sam2
-   ```
 
 ## Utilisation
 
@@ -39,10 +35,12 @@ Pour lancer l'application :
 uv run python app.py
 ```
 
+Cela va lancer un serveur local. Ouvrez le lien affiché (généralement `http://127.0.0.1:7860`) dans votre navigateur.
+
 ### Fonctionnement de l'interface
 
-1. **Chargement** : L'image `buches.jpg` est chargée par défaut. Vous pouvez en charger une autre via le bouton "Charger Image".
-2. **Comptage** : Cliquez simplement sur une bûche (clic gauche).
+1. **Chargement** : Glissez-déposez ou cliquez pour charger une image (ex: `buches.jpg`).
+2. **Comptage** : Cliquez simplement sur une bûche sur l'image.
    - Le modèle IA (SAM2) va détecter les contours de la bûche.
    - Un masque vert se superpose sur la bûche.
    - Le compteur s'incrémente.
@@ -50,13 +48,7 @@ uv run python app.py
    - **Annuler dernier** : Retire la dernière bûche comptée.
    - **Réinitialiser** : Efface tout et remet le compteur à zéro.
 
-## Modèle
+## Note technique
 
-Le projet utilise le modèle `facebook/sam2.1-hiera-tiny`. Il est léger et configuré pour tourner sur CPU par défaut pour une compatibilité maximale.
-Lors du premier lancement, le modèle sera téléchargé automatiquement par la bibliothèque `sam2`.
-
-## Structure du projet
-
-- `app.py` : Le code principal de l'interface graphique.
-- `buches.jpg` : Image d'exemple.
-- `legacy/` : Anciens scripts de tests et d'expérimentations.
+Le projet utilise le modèle `facebook/sam2.1-hiera-tiny`. Il est léger et configuré pour tourner sur CPU.
+L'interface est propulsée par Gradio.
