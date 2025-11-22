@@ -52,3 +52,9 @@ Cela va lancer un serveur local. Ouvrez le lien affiché (généralement `http:/
 
 Le projet utilise le modèle `facebook/sam2.1-hiera-tiny`. Il est léger et configuré pour tourner sur CPU.
 L'interface est propulsée par Gradio.
+
+### Dépendances spécifiques
+Ce projet nécessite des versions spécifiques pour éviter les conflits :
+- `gradio >= 4.0.0`
+- `pillow < 11.0`
+- `sam2` installé depuis la source git.
