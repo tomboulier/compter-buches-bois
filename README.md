@@ -32,7 +32,7 @@ curl -LsSf https://astral.sh/uv/install.sh | sh
 Pour lancer l'application :
 
 ```bash
-uv run python app.py
+uv run app.py
 ```
 
 Cela va lancer un serveur local. Ouvrez le lien affiché (généralement `http://127.0.0.1:7860`) dans votre navigateur.
